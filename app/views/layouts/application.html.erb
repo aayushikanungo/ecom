@@ -12,8 +12,5 @@
 
   <body>
     <%= yield %>
-      <%if current_user.present?%>
-        <%= link_to "Logout", destroy_user_session_path, class:"btn btn-info", method: :delete, :data => { turbo_method: :delete } %>
-      <%end%>
   </body>
 </html>
