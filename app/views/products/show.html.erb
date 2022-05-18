@@ -1,0 +1,16 @@
+<p>
+  <strong>name:</strong>
+  <%= @product.name %>
+</p>
+ 
+<p>
+  <strong>description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>price:</strong>
+  <%= @product.price %>
+</p>
+
+<%= link_to 'Back', products_path(@product), class:"btn btn-info" %>

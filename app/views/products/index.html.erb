@@ -1,0 +1,27 @@
+<h1>Listing products</h1>
+<div class="container">            
+  <table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>description</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to 'Show', product_path(product), class:"btn btn-primary" %></td>
+        <td><%= link_to "Destroy", product_path(product), class:"btn btn-danger", data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+        <td><%= link_to 'edit', edit_product_path(product), class:"btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</div>
+<%= link_to "New product", new_product_path, class:"btn btn-primary"  %>
