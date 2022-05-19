@@ -1,7 +1,13 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
+  
   def index
-    @products = Product.all
+    if current_user.seller?
+      @products = current_user.products
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -14,6 +20,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
     if @product.save
       redirect_to @product
     else
@@ -42,6 +49,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :category_id)
+    params.require(:product).permit(:name, :description, :price, :category_id, :user_id)
   end
 end
