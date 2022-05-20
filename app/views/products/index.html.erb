@@ -23,6 +23,7 @@
                     } %></td>
           <td><%= link_to 'edit', edit_product_path(product), class:"btn btn-primary" %></td>
         <%end%>
+        <td><%= link_to "Add to Cart",  add_to_cart_path, method: :post %></td>
       </tr>
     <% end %>
   </tbody>
