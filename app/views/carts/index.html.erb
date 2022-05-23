@@ -1,0 +1,19 @@
+<h1>Cart_items</h1>
+
+<div class="container">            
+  <table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.name %></td>
+        <td><%= cart_item.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</div>
