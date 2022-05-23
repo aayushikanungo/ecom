@@ -1,9 +1,14 @@
 class CartsController < ApplicationController
   def index
-    @carts = Carts.all
+    @cart_items = CartItem.all
   end
+  
+  def add_to_cart
+    product = Product.find(params[:product_id])
+    cart = current_user.cart
 
-  def add_to_cart(product)
-    debugger
+    @cart_item = cart.cart_items.new(name: product.name, quantity: 1)
+    @cart_item.save
+    redirect_to carts_path
   end
 end

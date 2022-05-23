@@ -23,7 +23,7 @@
                     } %></td>
           <td><%= link_to 'edit', edit_product_path(product), class:"btn btn-primary" %></td>
         <%end%>
-        <td><%= link_to "Add to Cart",  add_to_cart_path, method: :post %></td>
+        <td><%= link_to "Add to Cart", add_to_cart_path(product.id), :data => { turbo_method: :post }%></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,3 +32,4 @@
   <%= link_to "New product", new_product_path, class:"btn btn-primary" %>
 <%end%> 
 <%= link_to "Logout", destroy_user_session_path, class:"btn btn-info", method: :delete, :data => { turbo_method: :delete } %>
+<%= link_to "cart", carts_path, class:"btn btn-info" %>
