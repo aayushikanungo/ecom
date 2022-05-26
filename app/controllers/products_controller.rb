@@ -33,12 +33,12 @@ class ProductsController < ApplicationController
   end
 
   def update
+    debugger
     @product = Product.find(params[:id])
-    if @product.update(product_params)
-      redirect_to @product
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    GenerateProductJob.perform_later(@product, product_params)
+    redirect_to @product
+    # @product = Product.find(params[:id])
+    # @product.update(product_params)
   end
 
   def destroy
