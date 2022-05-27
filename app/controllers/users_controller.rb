@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    if @user.seller?
+      @seller = User.where(role: "seller").first
+      @user.products.update_all(user_id: @seller.id) if @user.products.any?
+    end
     @user.destroy
     redirect_to users_path
   end

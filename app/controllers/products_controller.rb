@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  # load_and_authorize_resource
+   load_and_authorize_resource
   before_action :authenticate_user!
   
   def index
@@ -33,12 +33,9 @@ class ProductsController < ApplicationController
   end
 
   def update
-    debugger
     @product = Product.find(params[:id])
     GenerateProductJob.perform_later(@product, product_params)
     redirect_to @product
-    # @product = Product.find(params[:id])
-    # @product.update(product_params)
   end
 
   def destroy
