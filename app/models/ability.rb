@@ -5,12 +5,12 @@ class Ability
 
   def initialize(user)
 
-      user ||= User.new 
-      if user.seller?
-        can :manage, :all
-      else
-        can :read, :all
-      end
+      # user ||= User.new 
+      # if user.seller?
+      #   can :manage, :all
+      # else
+      #   can :read, :all
+      # end
     
     # The first argument to `can` is the action you are giving the user
     # permission to do.
