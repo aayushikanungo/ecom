@@ -33,3 +33,7 @@
 <%end%> 
 <%= link_to "Logout", destroy_user_session_path, class:"btn btn-info", style:"float: right;" , method: :delete, :data => { turbo_method: :delete } %>
 <%= link_to "cart", carts_path, class:"btn btn-info" %>
+
+<%if current_user.admin?%>
+ <%= link_to "All users", users_path, class:"btn btn-info" %>
+<%end%>

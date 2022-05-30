@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @cart_items = current_user.cart.cart_items
   end
@@ -11,7 +13,7 @@ class CartsController < ApplicationController
     @cart_item.save
     redirect_to carts_path
   end
-
+                                                      
   def add_quantity
     @cart_item = CartItem.find(params[:id])
     @cart_item.quantity += 1
