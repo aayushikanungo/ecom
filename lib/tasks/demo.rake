@@ -9,5 +9,5 @@ namespace :demo do
       puts c
       product.update(name: c)
     end
-  # end
+  end
 end
