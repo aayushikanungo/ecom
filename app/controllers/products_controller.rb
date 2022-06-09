@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.avatar.attach(product_params[:avatar])
     @product.user_id = current_user.id
     @product.cart_id = current_user.cart.id
     if @product.save
@@ -47,6 +48,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :category_id, :user_id, :cart_id)
+    params.require(:product).permit(:name, :description, :price, :category_id, :user_id, :cart_id, :avatar)
   end
 end
