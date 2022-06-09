@@ -1,4 +1,11 @@
 <p>
+  <strong>image:</strong>
+  <% if @product.avatar.attached? %>
+    <%= image_tag(url_for(@product.avatar), :size => "260x180") %>
+  <% end %>
+</p>
+
+<p>
   <strong>name:</strong>
   <%= @product.name %>
 </p>
