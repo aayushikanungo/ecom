@@ -16,7 +16,9 @@
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <% if product.avatar.attached? %>
-          <td><%= image_tag(url_for(product.avatar), :size => "100x100") %></td>
+          <% product.avatar.each do |avatar| %>
+            <td><%= image_tag(avatar, size: '100x100') %></td>
+          <% end %>
         <% end %>
         <td><%= link_to 'Show', product_path(product), class:"btn btn-primary" %></td>
         <% if can? :manage,  @products %> 

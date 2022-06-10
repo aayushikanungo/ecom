@@ -27,7 +27,7 @@
 
   <div>
     <%= form.label :image %><br>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, multiple: true %>
     <% @product.errors.full_messages_for(:avatar).each do |message| %>
       <div><%= message %></div>
     <% end %>
